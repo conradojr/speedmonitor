@@ -2,8 +2,8 @@ import requests
 
 def get_speed():
     """Gets the speed of the internet connection."""
-    speedtest_url = "https://www.speedtest.net/"
-    response = requests.get(speedtest_url)
+    url = "https://www.speedtest.net/"
+    response = requests.get(url)
     if response.status_code == 200:
         data = response.json()
         download_speed = data["download"]
@@ -14,5 +14,5 @@ def get_speed():
 
 if __name__ == "__main__":
     download_speed, upload_speed = get_speed()
-    print("Download speed:", download_speed)
-    print("Upload speed:", upload_speed)
+    print("Download speed: {:.2f} Mbps".format(download_speed))
+    print("Upload speed: {:.2f} Mbps".format(upload_speed))
